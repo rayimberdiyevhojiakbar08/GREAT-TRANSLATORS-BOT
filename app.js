@@ -1,7 +1,13 @@
 import TelegramBot from "node-telegram-bot-api";
-
+import express from 'express';
 const token = '6373300914:AAFsqKHPhJdNmccjyRPpH8zQb1CkwBpi-yQ';
 const bot = new TelegramBot(token, {polling: true});
+
+const app = express()
+app.get('/', (req, res) => {
+    res.send('Hello')
+})
+app.listen(3336, console.log('server is running'))
 
 bot.setMyCommands([
     {
