@@ -1,10 +1,14 @@
 import TelegramBot from "node-telegram-bot-api";
-import http from 'http';
 import dotenv from 'dotenv'
+import express from "express";
 import fs from 'fs'
 dotenv.config()
-http.createServer((_, res) => res.end("Alive!")).listen(3349);
-
+const PORT = process.env.PORT || 3030;
+const app = express();
+app.get('/', (req, res) => {
+    res.send('Working')
+})
+app.listen(PORT, console.log('Server is running'))
 const token = process.env.BOT_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
